@@ -41,12 +41,6 @@ if [ ! -d "${GCC_32_DIR}" ]; then
   git clone --depth=1 -b lineage-19.1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git ${GCC_32_DIR}
 fi
 
-echo -e "\nCleanup KernelSU first on local build\n"
-rm -rf KernelSU drivers/kernelsu
-
-echo -e "\nKSU Support, let's Make it On\n"
-curl -kLSs "https://raw.githubusercontent.com/OzoraID/KernelSU-Next/next-experimental/kernel/setup.sh" | bash -s next-experimental
-
 mkdir -p out
 make O=out ARCH=arm64 $DEFCONFIG
 
